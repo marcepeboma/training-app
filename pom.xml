@@ -8,10 +8,11 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>training-app</name>
 	<url>http://maven.apache.org</url>
+
 	<scm>
-		<connection>scm:git:https://github.com/marcepeboma/training-app.git</connection>
-		<developerConnection>scm:git:https://github.com/marcepeboma/training-app.git</developerConnection>
-		<url>https://github.com/marcepeboma/training-app</url>
+		<connection>scm:git:https://github.com/marcepeboma/training-app2</connection>
+		<developerConnection>scm:git:https://github.com/Medkalifi/training-app2</developerConnection>
+		<url>https://github.com/Medkalifi/training-app2</url>
 		<tag>master</tag>
 	</scm>
 	<dependencies>
@@ -25,11 +26,31 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.35</version>
-			<scope>Runtime</scope>
 		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${project.build.directory}/lib
+							</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
 			<plugin>
 				<!-- Build an executable JAR -->
 				<groupId>org.apache.maven.plugins</groupId>
@@ -45,32 +66,15 @@
 					</archive>
 				</configuration>
 			</plugin>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-dependency-plugin</artifactId>
-			<executions>
-				<execution>
-					<id>copy</id>
-					<phase>package</phase>
-					<goals>
-						<goal>copy-dependencies</goal>
-					</goals>
-					<configuration>
-						<outputDirectory>
-							${project.build.directory}/lib
-						</outputDirectory>
-					</configuration>
-				</execution>
-			</executions>
-		</plugin>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-scm-plugin</artifactId>
-			<version>1.10.0</version>
-			<configuration>
-				<goals>install</goals>
-			</configuration>
-		</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.10.0</version>
+				<configuration>
+					<goals>install</goals>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
 </project>
