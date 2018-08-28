@@ -8,6 +8,12 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>training-app</name>
 	<url>http://maven.apache.org</url>
+	<scm>
+		<connection>scm:git:https://github.com/marcepeboma/training-app.git</connection>
+		<developerConnection>scm:git:https://github.com/marcepeboma/training-app.git</developerConnection>
+		<url>https://github.com/marcepeboma/training-app</url>
+		<tag>master</tag>
+	</scm>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -57,7 +63,14 @@
 				</execution>
 			</executions>
 		</plugin>
-
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-scm-plugin</artifactId>
+			<version>1.10.0</version>
+			<configuration>
+				<goals>install</goals>
+			</configuration>
+		</plugin>
 		</plugins>
 	</build>
 </project>
